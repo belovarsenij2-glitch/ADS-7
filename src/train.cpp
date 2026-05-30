@@ -31,7 +31,6 @@ void Train::addCar(bool light) {
 int Train::getLength() {
     if (!first) return 0;
     countOp = 0;
-    
     first->light = true;
     Car *current = first;
     
