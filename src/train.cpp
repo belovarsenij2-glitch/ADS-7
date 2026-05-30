@@ -2,6 +2,7 @@
 #include "train.h"
 
 Train::Train() : countOp(0), first(nullptr) {}
+
 void Train::addCar(bool light) {
     Car *newCar = new Car{light, nullptr, nullptr};
     if (!first) {
@@ -22,7 +23,6 @@ int Train::getLength() {
     countOp = 0;
     first->light = true;
     Car *current = first;
-    
     while (true) {
         int steps = 0;
         do {
@@ -30,14 +30,11 @@ int Train::getLength() {
             countOp++;
             steps++;
         } while (!current->light);
-        
         current->light = false;
-        
         for (int i = 0; i < steps; i++) {
             current = current->prev;
             countOp++;
         }
-        
         if (!current->light) {
             return steps;
         }
